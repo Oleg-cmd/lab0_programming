@@ -48,33 +48,51 @@ public class Main {
         // массив (множество), для проверки условия
         int[] mn = {4, 6, 12, 18};
 
-        for (int i = 0; i < 9; i++) {  //идём по строкам
-            for (int j = 0; j < 16; j++) {//идём по столбцам
+        if(d[0] != 0 && x[0] != 0){
+            for (int i = 0; i < 9; i++) {  //идём по строкам
+                for (int j = 0; j < 16; j++) {//идём по столбцам
 
-                if(d[i] == 10){
-                    a[i][j] = Math.tan(Math.cos(Math.pow(x[j]*0.5, 2)));
+                    if(d[i] == 10){
+                        a[i][j] = Math.tan(Math.cos(Math.pow(x[j]*0.5, 2)));
+                    }
+
+                    // переменная для проверки принадлежности значения к множеству
+                    boolean doesContain = Arrays.stream(mn)
+                            .anyMatch(d[i]::equals);
+
+
+                    // при округлении будут получаться одинаковые значения, но исчезнет NaN
+
+                    if(doesContain){
+                        // понимаю, что для чтения это трудно воспринимается, однако задание заставило((
+                         a[i][j] = Math.asin(Math.pow(Math.E, Math.round(Math.pow(-Math.pow(Math.sin(x[j]), 2), 1.0/3.0))));
+                    }
+
+//                     if(d[i] !=10 && !doesContain){
+//                        // простите пожалуйста(((
+//                        a[i][j] = Math.pow(2*Math.pow((Math.round(Math.pow(Math.sin(x[j]), 1.0/3.0))), 0.25*Math.tan(Math.pow(Math.E, x[j]))), 3);
+//                    }
+
+//                    if(doesContain){
+//                        // понимаю, что для чтения это трудно воспринимается, однако задание заставило((
+//                        a[i][j] = Math.asin(Math.pow(Math.E, Math.pow(-Math.pow(Math.sin(x[j]), 2), 1.0/3.0)));
+//                    }
+//
+                    if(d[i] !=10 && !doesContain){
+                        // простите пожалуйста(((
+                        a[i][j] = Math.pow(2*Math.pow((Math.pow(Math.sin(x[j]), 1.0/3.0)), 0.25*Math.tan(Math.pow(Math.E, x[j]))), 3);
+                    }
+
+
+
+                    System.out.printf("%.5f", a[i][j]); //вывод элемента
+                    System.out.print(" ");
                 }
-
-                // переменная для проверки принадлежности значения к множеству
-                boolean doesContain = Arrays.stream(mn)
-                        .anyMatch(d[i]::equals);
-
-                if(doesContain){
-                    // понимаю, что для чтения это трудно воспринимается, однако задание заставило((
-                    a[i][j] = Math.asin(Math.pow(Math.E, Math.round(Math.pow(-Math.pow(Math.sin(x[j]), 2), 1.0/3.0))));
-                }
-
-                if(d[i] !=10 && !doesContain){
-                    // простите пожалуйста(((
-                    a[i][j] = Math.pow(2*Math.pow((Math.round(Math.pow(Math.sin(x[j]), 1.0/3.0))), 0.25*Math.tan(Math.pow(Math.E, x[j]))), 3);
-                }
-
-
-                System.out.printf("%.5f", a[i][j]); //вывод элемента
-                System.out.print(" ");
+                System.out.println();//перенос строки ради визуального сохранения табличной формы
             }
-            System.out.println();//перенос строки ради визуального сохранения табличной формы
+
         }
+
 
         System.out.println();
         System.out.println("End of third array");
