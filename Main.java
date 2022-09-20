@@ -64,8 +64,13 @@ public class Main {
                     // при округлении будут получаться одинаковые значения, но исчезнет NaN
 
                     if(doesContain){
+                        double elem = Math.pow(-Math.pow(Math.sin(x[j]), 2), 1.0/3.0);
                         // понимаю, что для чтения это трудно воспринимается, однако задание заставило((
-                         a[i][j] = Math.asin(Math.pow(Math.E, Math.round(Math.pow(-Math.pow(Math.sin(x[j]), 2), 1.0/3.0))));
+                        a[i][j] = Math.asin(Math.pow(Math.E, elem));
+                        if(Double.isNaN(a[i][j])){
+                            a[i][j] = Math.asin(Math.pow(Math.E, Math.round(elem)));
+                        }
+
                     }
 
 //                     if(d[i] !=10 && !doesContain){
@@ -79,8 +84,13 @@ public class Main {
 //                    }
 //
                     if(d[i] !=10 && !doesContain){
+                        double elem = Math.pow(Math.sin(x[j]), 1.0/3.0);
+                        double elemTan = 0.25*Math.tan(Math.pow(Math.E, x[j]));
                         // простите пожалуйста(((
-                        a[i][j] = Math.pow(2*Math.pow((Math.pow(Math.sin(x[j]), 1.0/3.0)), 0.25*Math.tan(Math.pow(Math.E, x[j]))), 3);
+                        a[i][j] = Math.pow(2*Math.pow(elem, elemTan), 3);
+                        if(Double.isNaN(a[i][j])){
+                            a[i][j] = Math.pow(2*Math.pow((Math.round(elem)), elemTan), 3);
+                        }
                     }
 
 
