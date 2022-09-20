@@ -73,16 +73,6 @@ public class Main {
 
                     }
 
-//                     if(d[i] !=10 && !doesContain){
-//                        // простите пожалуйста(((
-//                        a[i][j] = Math.pow(2*Math.pow((Math.round(Math.pow(Math.sin(x[j]), 1.0/3.0))), 0.25*Math.tan(Math.pow(Math.E, x[j]))), 3);
-//                    }
-
-//                    if(doesContain){
-//                        // понимаю, что для чтения это трудно воспринимается, однако задание заставило((
-//                        a[i][j] = Math.asin(Math.pow(Math.E, Math.pow(-Math.pow(Math.sin(x[j]), 2), 1.0/3.0)));
-//                    }
-//
                     if(d[i] !=10 && !doesContain){
                         double elem = Math.pow(Math.sin(x[j]), 1.0/3.0);
                         double elemTan = 0.25*Math.tan(Math.pow(Math.E, x[j]));
